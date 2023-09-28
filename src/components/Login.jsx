@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import axios from '../api/axios';
+import Authcontext from '../context/AuthContext';
 const LOGIN_URL = '/auth';
 
 function Login() {
@@ -10,6 +11,8 @@ function Login() {
 	const [pwd, setPwd] = useState('');
 	const [errMsg, setErrMsg] = useState('');
 	const [success, setSuccess] = useState(false);
+
+	const { setAuth } = useContext(Authcontext);
 
 	useEffect(() => {
 		userRef.current.focus();
@@ -27,6 +30,8 @@ function Login() {
 				withCredentials: true,
 			});
 			console.log(response.data);
+			const accessToken = response.data.accessToken;
+			setAuth({ user, pwd, accessToken });
 			setUser('');
 			setPwd('');
 			setSuccess(true);
