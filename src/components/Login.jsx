@@ -35,7 +35,6 @@ function Login() {
 			setUser('');
 			setPwd('');
 			setSuccess(true);
-			//TODO:Store tokens in global state (redux or context)
 		} catch (error) {
 			switch (error) {
 				case error.response?.status === 400:
