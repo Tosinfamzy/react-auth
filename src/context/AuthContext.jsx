@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
 
-const Authcontext = createContext({});
+const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
 	const [auth, setAuth] = useState({});
+
 	return (
-		<Authcontext.Provider value={{ auth, setAuth }}>
+		<AuthContext.Provider value={{ auth, setAuth }}>
 			{children}
-		</Authcontext.Provider>
+		</AuthContext.Provider>
 	);
 };
 
-export default Authcontext;
+export default AuthContext;

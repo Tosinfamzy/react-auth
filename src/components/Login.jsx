@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import axios from '../api/axios';
-import Authcontext from '../context/AuthContext';
+import AuthContext from '../context/AuthContext';
 const LOGIN_URL = '/auth';
 
 function Login() {
@@ -12,7 +12,7 @@ function Login() {
 	const [errMsg, setErrMsg] = useState('');
 	const [success, setSuccess] = useState(false);
 
-	const { setAuth } = useContext(Authcontext);
+	const { setAuth } = useContext(AuthContext);
 
 	useEffect(() => {
 		userRef.current.focus();
